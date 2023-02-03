@@ -1,72 +1,19 @@
+import 'react-native-gesture-handler';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+
+import {Provider} from 'react-redux';
+import {Store} from './src/redux/Store';
 import React from 'react';
-import {Button, StyleSheet, Text, View} from 'react-native';
+import Navigator from './src/navigation/CommonStackNavigation';
 
-export interface Props {
-  name: string;
-  enthusiasmLevel?: number;
-}
-
-const Hello: React.FC<Props> = props => {
-  const [enthusiasmLevel, setEnthusiasmLevel] = React.useState(
-    props.enthusiasmLevel,
-  );
-
-  const onIncrement = () => setEnthusiasmLevel((enthusiasmLevel || 0) + 1);
-  const onDecrement = () => setEnthusiasmLevel((enthusiasmLevel || 0) - 1);
-
-  const getExclamationMarks = (numChars: number) =>
-    Array(numChars + 1).join('!');
+const App = () => {
   return (
-    <View style={styles.root}>
-      <Text style={styles.greeting}>
-        Hello {props.name + getExclamationMarks(enthusiasmLevel || 0)}
-      </Text>
-
-      <View style={styles.buttons}>
-        <View style={styles.button}>
-          <Button
-            title="-"
-            onPress={onDecrement}
-            accessibilityLabel="decrement"
-            color="red"
-          />
-        </View>
-
-        <View style={styles.button}>
-          <Button
-            title="+"
-            onPress={onIncrement}
-            accessibilityLabel="increment"
-            color="blue"
-          />
-        </View>
-      </View>
-    </View>
+    <SafeAreaProvider>
+      <Provider store={Store}>
+        <Navigator />
+      </Provider>
+    </SafeAreaProvider>
   );
 };
 
-// styles
-const styles = StyleSheet.create({
-  root: {
-    alignItems: 'center',
-    alignSelf: 'center',
-    marginTop: 100,
-  },
-  buttons: {
-    flexDirection: 'row',
-    minHeight: 70,
-    alignItems: 'stretch',
-    alignSelf: 'center',
-    borderWidth: 5,
-  },
-  button: {
-    flex: 1,
-    paddingVertical: 0,
-  },
-  greeting: {
-    color: '#999',
-    fontWeight: 'bold',
-  },
-});
-
-export default Hello;
+export default App;
