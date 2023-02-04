@@ -1,9 +1,11 @@
 import React from 'react';
 import {View, Text} from 'react-native';
 import {CommonStyles} from '../../../common/styles/CommonStyles';
+import {hp} from '../../../common/util/LayoutUtils';
 import SpacerWrapper from '../../../common/util/SpacerWrapper';
 import BackButton from '../../../components/BackButton';
 import {Button} from '../../../components/Button';
+import {CancelButtonWithUnderline} from '../../../components/CancelButton';
 import {Input} from '../../../components/input';
 
 const SignIn = ({navigation}: {navigation: any}) => {
@@ -20,7 +22,7 @@ const SignIn = ({navigation}: {navigation: any}) => {
           </Text>
           <View style={CommonStyles.emailContainer}>
             <Input
-              label="Username"
+              label="Username / Email Address"
               style={[CommonStyles.password]}
               labelStyle={CommonStyles.label}
             />
@@ -29,9 +31,22 @@ const SignIn = ({navigation}: {navigation: any}) => {
           <View>
             <Button
               icon={undefined}
-              title="Continue"
+              title="Sign In"
               style={CommonStyles.signupwithgoogle}
               styleText={CommonStyles.textStyle}
+            />
+          </View>
+          <View style={CommonStyles.row}>
+            <Text style={[CommonStyles.account]}>
+              SignIn with your Google Account?{' '}
+            </Text>
+            <CancelButtonWithUnderline
+              title="Login"
+              // onPressButton={() => navigation.getParent()?.navigate("SignIn")}
+              styleText={{
+                fontSize: hp(14),
+                fontWeight: '500',
+              }}
             />
           </View>
         </View>

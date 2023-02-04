@@ -1,31 +1,14 @@
 import React from 'react';
-import {FEMALE, Gender, MALE} from '../../../constants/Gender';
-import {View} from 'react-native';
 import {Formik} from 'formik';
 import InputFormFieldNormal from '../../../components/InputFormFieldNormal';
 import * as yup from 'yup';
-import {hp} from '../../../common/util/LayoutUtils';
 import {Button} from '../../../components/Button';
-import * as Colors from '../../../constants/Colors';
-import {TextHeader} from '../../../common/text/textHeader';
 import {CommonStyles} from '../../../common/styles/CommonStyles';
-import RNPickerSelect from 'react-native-picker-select';
 
 const SignUpProfile = ({navigation}: {navigation: any}) => {
-  const placeholder = {
-    label: 'Select Gender',
-    value: 'unknown',
-    key: -1,
-    color: Colors.black,
-  };
-
   const signUpValidationSchema = yup.object().shape({
     firstname: yup.string().required('Firstname is required'),
     lastname: yup.string().required('Lastname is required'),
-    gender: yup
-      .string()
-      .required('Please select a gender')
-      .oneOf([MALE, FEMALE]),
   });
 
   return (
@@ -35,8 +18,8 @@ const SignUpProfile = ({navigation}: {navigation: any}) => {
         initialValues={{
           firstname: '',
           lastname: '',
-          gender: '',
           emailAddress: '',
+          phoneNumber: yup.number,
         }}
         onSubmit={() => navigation.navigate('signin')}>
         {({
@@ -76,6 +59,19 @@ const SignUpProfile = ({navigation}: {navigation: any}) => {
             />
             <InputFormFieldNormal
               placeholderVisible
+              onChangeText={handleChange('phoneNumber')}
+              onBlur={handleBlur('phoneNumber')}
+              value={values.phoneNumber}
+              type="phoneNumber"
+              formikProps={{
+                errors: errors.phoneNumber,
+                touched: touched.phoneNumber,
+              }}
+              autoFocus
+            />
+
+            <InputFormFieldNormal
+              placeholderVisible
               onChangeText={handleChange('emailAddress')}
               onBlur={handleBlur('emailAddress')}
               value={values.emailAddress}
@@ -86,32 +82,6 @@ const SignUpProfile = ({navigation}: {navigation: any}) => {
               }}
               autoFocus
             />
-
-            <TextHeader label="Gender" style={[CommonStyles.genderstyle]} />
-            <View style={CommonStyles.genderContainer}>
-              <RNPickerSelect
-                placeholder={placeholder}
-                onValueChange={value => {
-                  handleChange('gender')(value);
-                  console.log(values.gender);
-                }}
-                value={values.gender}
-                items={Gender}
-                pickerProps={{
-                  style: {},
-                  itemStyle: {},
-                }}
-                style={{
-                  placeholder: {
-                    fontSize: hp(15),
-                    lineHeight: hp(20),
-                    // fontFamily: 'Euclid-Circular-A',
-                    color: Colors.black,
-                    fontWeight: '400',
-                  },
-                }}
-              />
-            </View>
 
             <Button
               title="Continue"
