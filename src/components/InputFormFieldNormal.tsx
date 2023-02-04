@@ -14,14 +14,12 @@ const InputFormFieldNormal = ({
   onChangeText: (text: string) => void;
   onBlur: (e: any) => void;
   autoFocus: boolean;
-  value: string;
+  value: any;
   placeholderVisible: boolean;
   formikProps: {errors: any; touched: any};
-  type: 'email' | 'firstname' | 'lastname';
+  type: 'email' | 'firstname' | 'lastname' | 'phoneNumber';
 }) => {
   const typeOfEmail = type === 'email';
-
-  // let EMAIL_REGEX = /^w+(-?w+)*@w+(-?w+)*(.ww+)+$/;
 
   return (
     <View style={CommonStyles.formcontainer}>

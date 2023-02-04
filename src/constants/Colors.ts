@@ -1,3 +1,5 @@
+export const linear = '#4F3D56';
+export const magenta = '#DDDDDD';
 export const pink = '#FF2156';
 export const orange = '#FFA451';
 export const deepblue = '#27214D';

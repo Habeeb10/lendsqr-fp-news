@@ -12,7 +12,6 @@ export const CommonStyles = StyleSheet.create({
   placeholder: {
     marginBottom: hp(5),
     fontSize: hp(18),
-    // fontFamily: 'Euclid-Circular-A-Medium',
     fontWeight: '500',
   },
   formtext: {
@@ -40,18 +39,16 @@ export const CommonStyles = StyleSheet.create({
     padding: hp(5),
     fontWeight: '600',
     fontSize: hp(26),
-    // fontFamily: "Euclid-Circular-A-Bold",
     marginLeft: hp(13),
     lineHeight: hp(30),
   },
   bodyText: {
     padding: hp(3),
     margin: hp(3),
-    // fontFamily: "Euclid-Circular-A",
     marginLeft: hp(15),
     fontSize: hp(16),
     fontWeight: '500',
-    marginBottom: hp(35),
+    marginBottom: hp(15),
   },
   phoneContainer: {
     marginTop: hp(20),
@@ -60,7 +57,6 @@ export const CommonStyles = StyleSheet.create({
   genderstyle: {
     marginLeft: hp(20),
     fontSize: hp(18),
-    // fontFamily: 'Euclid-Circular-A-Medium',
     marginTop: hp(10),
     fontWeight: '500',
   },
@@ -82,7 +78,6 @@ export const CommonStyles = StyleSheet.create({
     borderRadius: 5,
     padding: 15,
     fontSize: hp(16),
-    // fontFamily: "Euclid-Circular-A",
     fontWeight: '400',
   },
   errorText: {
@@ -102,12 +97,10 @@ export const CommonStyles = StyleSheet.create({
   cancel: {
     fontSize: hp(14),
     fontWeight: '500',
-    // fontFamily: 'Euclid-Circular-A-Semi-Bold',
   },
   account: {
-    fontSize: hp(16),
+    fontSize: hp(14),
     fontWeight: '500',
-    // fontFamily: 'Euclid-Circular-A',
   },
   // user: {
   //   marginVertical: hp(10),
@@ -161,7 +154,6 @@ export const CommonStyles = StyleSheet.create({
   textStyle: {
     color: Colors.white,
     fontSize: hp(16),
-    marginLeft: hp(20),
     fontWeight: '500',
   },
   continue: {
@@ -170,7 +162,7 @@ export const CommonStyles = StyleSheet.create({
   },
   signupwithgoogle: {
     backgroundColor: '#121212',
-    marginTop: hp(70),
+    marginTop: hp(20),
   },
   button: {
     marginTop: hp(48),
@@ -185,7 +177,7 @@ export const CommonStyles = StyleSheet.create({
     marginVertical: hp(20),
   },
   emailContainer: {
-    marginTop: hp(20),
+    marginTop: hp(10),
     paddingHorizontal: hp(20),
   },
 
@@ -208,4 +200,98 @@ export const CommonStyles = StyleSheet.create({
   //   fontWeight: 'bold',
   //   color: Colors.purple,
   // },
+
+  // list styles
+  errorButton: {
+    backgroundColor: Colors.linear,
+    width: wp(70.5),
+    marginLeft: hp(15),
+    alignSelf: 'center',
+    height: hp(31),
+  },
+  listbutton: {
+    backgroundColor: Colors.linear,
+    width: wp(100.5),
+  },
+  edgescontainer: {
+    flex: 1,
+  },
+
+  loading: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  author: {
+    fontWeight: '500',
+    fontSize: hp(12),
+    marginBottom: hp(10),
+  },
+  title: {
+    fontWeight: '500',
+    fontSize: hp(12),
+    marginBottom: hp(10),
+  },
+  flatlistContainer: {
+    paddingTop: hp(10),
+  },
+
+  listheader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: hp(10),
+    alignItems: 'center',
+    marginTop: hp(20),
+  },
+  news: {
+    fontWeight: '500',
+    fontSize: hp(14),
+  },
+  listcontainer: {
+    marginTop: hp(50),
+    paddingHorizontal: wp(10),
+    flex: 1,
+  },
+  indicator: {
+    marginTop: hp(20),
+  },
+
+  // details style
+  detailbutton: {
+    backgroundColor: Colors.linear,
+  },
+  detailloading: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  detailauthor: {
+    fontWeight: '500',
+    fontSize: hp(12),
+    marginBottom: hp(10),
+  },
+  summary: {
+    fontWeight: '500',
+    fontSize: hp(12),
+    marginBottom: hp(10),
+  },
+  deatilheader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: hp(18),
+    alignItems: 'center',
+    marginTop: hp(15),
+  },
+  details: {
+    fontWeight: '500',
+    fontSize: hp(14),
+  },
+  detailcontainer: {
+    marginTop: hp(50),
+    paddingHorizontal: wp(10),
+    flex: 1,
+  },
+  detailindicator: {
+    marginTop: hp(20),
+  },
 });
