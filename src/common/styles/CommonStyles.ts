@@ -3,6 +3,41 @@ import * as Colors from '../../constants/Colors';
 import {hp, wp} from '../util/LayoutUtils';
 
 export const CommonStyles = StyleSheet.create({
+  buttonSignIn: {
+    fontSize: hp(14),
+    fontWeight: '500',
+  },
+  buttonSignup: {
+    color: 'white',
+    marginHorizontal: 5,
+  },
+  buttonBackground: {
+    backgroundColor: '#EB4235',
+  },
+  alternativeText: {
+    fontWeight: 'bold',
+    fontSize: 16,
+    color: '#A6A6A6',
+  },
+  alternativeContainer: {
+    alignSelf: 'center',
+    marginBottom: 20,
+    marginTop: 20,
+  },
+  cancelButton: {
+    fontSize: hp(15),
+    fontWeight: '500',
+  },
+  formContainer: {
+    width: '90%',
+    alignSelf: 'center',
+    marginBottom: 30,
+  },
+  formStyle: {
+    marginBottom: hp(5),
+    fontSize: hp(18),
+    fontWeight: '500',
+  },
   signUp: {
     flex: 1,
   },
@@ -100,7 +135,6 @@ export const CommonStyles = StyleSheet.create({
   },
   account: {
     fontSize: hp(14),
-    fontWeight: '500',
   },
   // user: {
   //   marginVertical: hp(10),
@@ -164,6 +198,11 @@ export const CommonStyles = StyleSheet.create({
     backgroundColor: '#121212',
     marginTop: hp(20),
   },
+  detailsButton: {
+    width: hp(80),
+    height: hp(30),
+    backgroundColor: '#121212',
+  },
   button: {
     marginTop: hp(48),
   },
@@ -210,8 +249,9 @@ export const CommonStyles = StyleSheet.create({
     height: hp(31),
   },
   listbutton: {
-    backgroundColor: Colors.linear,
-    width: wp(100.5),
+    backgroundColor: Colors.manatee,
+    width: wp(100),
+    height: hp(40),
   },
   edgescontainer: {
     flex: 1,
@@ -241,7 +281,7 @@ export const CommonStyles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingHorizontal: hp(10),
     alignItems: 'center',
-    marginTop: hp(20),
+    marginTop: hp(15),
   },
   news: {
     fontWeight: '500',
