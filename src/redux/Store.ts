@@ -3,7 +3,7 @@ import NewsReducer from './slice/NewsSlice';
 
 export const Store = configureStore({
   reducer: {
-    NewsSlice: NewsReducer,
+    NewsReducer,
   },
 });
 
