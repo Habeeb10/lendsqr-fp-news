@@ -24,3 +24,6 @@ export const darkgreen = '#013220';
 export const disables = '#A6A6A6';
 
 export const manatee = '#8F92B2';
+export const dark = '#121212';
+
+export const peach = '#F2F2F2';

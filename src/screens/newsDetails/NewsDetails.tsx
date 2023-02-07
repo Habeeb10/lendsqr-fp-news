@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
 import {FlatList, View} from 'react-native';
 import {CommonStyles} from '../../common/styles/CommonStyles';
-import {Button} from '../../components/Button';
-import BackButton from '../../components/BackButton';
+import {Button} from '../../components/button/Button';
+import BackButton from '../../components/button/BackButton';
 import {DetailsList} from './DetailsCard';
 import {useAppDispatch, useAppSelector} from '../../redux/hooks';
 import {FetchNews} from '../../redux/slice/NewsSlice';

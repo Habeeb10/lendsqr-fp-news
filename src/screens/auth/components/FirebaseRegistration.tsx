@@ -35,3 +35,5 @@ RegistrationType) => {
     });
   console.log(email, password);
 };
+
+export {firebase};

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Text, TextInput, View} from 'react-native';
-import {CommonStyles} from '../common/styles/CommonStyles';
+import {CommonStyles} from '../../common/styles/CommonStyles';
 // import {hp} from '../common/util/LayoutUtils';
 
 const InputFormFieldNormal = ({

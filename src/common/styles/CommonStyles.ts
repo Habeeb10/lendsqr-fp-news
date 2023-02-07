@@ -3,6 +3,10 @@ import * as Colors from '../../constants/Colors';
 import {hp, wp} from '../util/LayoutUtils';
 
 export const CommonStyles = StyleSheet.create({
+  placeholderStyle: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
   buttonSignIn: {
     fontSize: hp(14),
     fontWeight: '500',
@@ -136,9 +140,7 @@ export const CommonStyles = StyleSheet.create({
   account: {
     fontSize: hp(14),
   },
-  // user: {
-  //   marginVertical: hp(10),
-  // },
+
   row: {
     flexDirection: 'row',
     alignSelf: 'center',
@@ -150,7 +152,7 @@ export const CommonStyles = StyleSheet.create({
   },
   wrapperContainer: {
     flex: hp(1),
-    backgroundColor: 'white',
+    backgroundColor: Colors.white,
   },
   Container: {
     paddingHorizontal: hp(10),
@@ -168,10 +170,7 @@ export const CommonStyles = StyleSheet.create({
     color: Colors.gray,
     fontWeight: 'bold',
   },
-  // account: {
-  //   fontSize: hp(16),
-  //   color: Colors.gray,
-  // },
+
   accountcontainer: {
     flexDirection: 'row',
     marginTop: hp(25),
@@ -191,17 +190,17 @@ export const CommonStyles = StyleSheet.create({
     fontWeight: '500',
   },
   continue: {
-    backgroundColor: '#121212',
+    backgroundColor: Colors.dark,
     marginTop: hp(40),
   },
   signupwithgoogle: {
-    backgroundColor: '#121212',
+    backgroundColor: Colors.dark,
     marginTop: hp(20),
   },
   detailsButton: {
     width: hp(80),
     height: hp(30),
-    backgroundColor: '#121212',
+    backgroundColor: Colors.dark,
   },
   button: {
     marginTop: hp(48),
@@ -210,8 +209,8 @@ export const CommonStyles = StyleSheet.create({
   password: {
     height: hp(49),
     width: '100%',
-    backgroundColor: '#F2F2F2',
-    borderColor: '#121212',
+    backgroundColor: Colors.peach,
+    borderColor: Colors.dark,
     borderWidth: 1,
     marginVertical: hp(20),
   },
@@ -232,13 +231,6 @@ export const CommonStyles = StyleSheet.create({
     marginBottom: hp(10),
     fontWeight: '500',
   },
-  // header: {
-  //   fontSize: hp(20),
-  //   letterSpacing: hp(0),
-  //   textAlign: 'center',
-  //   fontWeight: 'bold',
-  //   color: Colors.purple,
-  // },
 
   // list styles
   errorButton: {

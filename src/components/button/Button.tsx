@@ -7,8 +7,8 @@ import {
   ViewStyle,
   ActivityIndicator,
 } from 'react-native';
-import * as Colors from '../constants/Colors';
-import {hp} from '../common/util/LayoutUtils';
+import * as Colors from '../../constants/Colors';
+import {hp} from '../../common/util/LayoutUtils';
 
 type ButtonPropsType = {
   title: string;
@@ -40,7 +40,6 @@ export const Button: FC<ButtonPropsType> = ({
         styles.doneButton,
         isNext && styles.nextButton,
         style,
-        {flexDirection: 'row', alignItems: 'center'},
 
         disabled && {
           backgroundColor: Colors.disables,
@@ -80,8 +79,8 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'center',
     alignSelf: 'center',
-    // marginTop: hp(100),
     marginBottom: hp(20),
+    flexDirection: 'row',
   },
   nextButton: {
     backgroundColor: Colors.darkgreen,

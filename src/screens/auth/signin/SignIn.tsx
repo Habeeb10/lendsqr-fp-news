@@ -1,14 +1,21 @@
-import React from 'react';
-import {View, Text} from 'react-native';
+import React, {useState} from 'react';
+import {View, Text, Alert} from 'react-native';
 import {CommonStyles} from '../../../common/styles/CommonStyles';
-import {hp} from '../../../common/util/LayoutUtils';
 import SpacerWrapper from '../../../common/util/SpacerWrapper';
-import BackButton from '../../../components/BackButton';
-import {Button} from '../../../components/Button';
-import {CancelButtonWithUnderline} from '../../../components/CancelButton';
-import {Input} from '../../../components/input';
+import BackButton from '../../../components/button/BackButton';
+import {Button} from '../../../components/button/Button';
+import {CancelButtonWithUnderline} from '../../../components/button/CancelButton';
+import {Input} from '../../../components/input/input';
 
 const SignIn = ({navigation}: {navigation: any}) => {
+  const [email, setEmail] = useState('');
+  const handleLogin = () => {
+    if (!email) {
+      return Alert.alert('Warning', 'Enter your email address');
+    } else {
+      navigation.navigate('newsListing');
+    }
+  };
   return (
     <>
       <SpacerWrapper>
@@ -22,20 +29,25 @@ const SignIn = ({navigation}: {navigation: any}) => {
           </Text>
           <View style={CommonStyles.emailContainer}>
             <Input
-              label="Username / Email Address"
+              label="Email Address"
               style={[CommonStyles.password]}
               labelStyle={CommonStyles.label}
+              value={email}
+              onChangeText={setEmail}
             />
           </View>
-
           <View>
             <Button
-              onPressButton={() => navigation.navigate('newsListing')}
+              onPressButton={handleLogin}
               icon={undefined}
               title="Sign In"
               style={CommonStyles.signupwithgoogle}
               styleText={CommonStyles.textStyle}
+              disabled={!email}
             />
+          </View>
+          <View style={CommonStyles.alternativeContainer}>
+            <Text style={CommonStyles.alternativeText}>OR</Text>
           </View>
           <View style={CommonStyles.row}>
             <Text style={[CommonStyles.account]}>

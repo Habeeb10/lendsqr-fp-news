@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {FlatList, View, Alert} from 'react-native';
 import SpacerWrapper from '../../common/util/SpacerWrapper';
 import {CommonStyles} from '../../common/styles/CommonStyles';
-import {Button} from '../../components/Button';
+import {Button} from '../../components/button/Button';
 import {NewsList} from './NewsCard';
 import {useAppDispatch, useAppSelector} from '../../redux/hooks';
 import {FetchNews} from '../../redux/slice/NewsSlice';
@@ -36,14 +36,14 @@ export default function NewsListing({navigation}: {navigation: any}) {
             <Button
               title="Error"
               onPressButton={handError}
-              icon={undefined} //   Style={CommonStyles.errorButton}
+              icon={undefined}
               style={CommonStyles.listbutton}
               styleText={CommonStyles.textStyle}
             />
             <Button
               title="Show Details"
               onPressButton={() => navigation.navigate('newsDetails')}
-              icon={undefined} //   Style={CommonStyles.listbutton}
+              icon={undefined}
               style={CommonStyles.listbutton}
               styleText={CommonStyles.textStyle}
             />

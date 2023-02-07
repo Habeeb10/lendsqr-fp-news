@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View, Text, Image} from 'react-native';
+import {StyleSheet, View, Text, Image, TouchableOpacity} from 'react-native';
 // import {format} from 'date-fns';
 import * as Colors from '../../constants/Colors';
 import {hp, wp} from '../../common/util/LayoutUtils';
@@ -9,6 +9,8 @@ type NewsListProps = {
   published_date: string;
   topic: string;
   media: string;
+
+  onPress?: () => void;
 };
 
 export const NewsList = ({
@@ -16,17 +18,20 @@ export const NewsList = ({
   published_date,
   topic,
   media,
+
+  onPress,
 }: NewsListProps) => {
-  // const dateFormatter = format(new Date(published_date), 'pppp');
   return (
-    <View style={styles.container}>
-      <View>
-        <Text style={styles.title}>Titlte:{title}</Text>
-        <Text style={styles.topic}>Topic:{topic}</Text>
-        <Text style={styles.date}>Date:{published_date}</Text>
+    <>
+      <View style={styles.container}>
+        <TouchableOpacity onPress={onPress}>
+          <Text style={styles.title}>Titlte:{title}</Text>
+          <Text style={styles.topic}>Topic:{topic}</Text>
+          <Text style={styles.date}>Date:{published_date}</Text>
+        </TouchableOpacity>
+        <Image source={{uri: media}} style={styles.image} />
       </View>
-      <Image source={{uri: media}} style={styles.image} />
-    </View>
+    </>
   );
 };
 const styles = StyleSheet.create({

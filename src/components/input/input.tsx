@@ -9,27 +9,34 @@ import {
   View,
   TextStyle,
 } from 'react-native';
-import {hp, wp} from '../common/util/LayoutUtils';
-import * as Colors from '../constants/Colors';
+import {hp, wp} from '../../common/util/LayoutUtils';
+import * as Colors from '../../constants/Colors';
 
 export type InputProps = {
   label: string;
   isPhone?: boolean;
   style?: StyleProp<ViewStyle>;
   labelStyle: StyleProp<TextStyle>;
+  value: string;
 };
 
 export const Input = ({
   label,
-
   style,
   labelStyle,
+  onChangeText,
+  value,
   ...rest
 }: InputProps & TextInputProps) => {
   return (
     <View style={styles.container}>
       <Text style={[styles.label, labelStyle]}>{label}</Text>
-      <TextInput {...rest} style={[styles.textInput, style]} />
+      <TextInput
+        onChangeText={onChangeText}
+        {...rest}
+        style={[styles.textInput, style]}
+        value={value}
+      />
     </View>
   );
 };

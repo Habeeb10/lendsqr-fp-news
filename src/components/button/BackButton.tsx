@@ -6,8 +6,8 @@ import {
   TouchableOpacity,
   ViewStyle,
 } from 'react-native';
-import {BackIcon} from '../../assets/svg';
-import {hp} from '../common/util/LayoutUtils';
+import {BackIcon} from '../../../assets/svg';
+import {hp} from '../../common/util/LayoutUtils';
 
 type BackButtonType = {
   style?: StyleProp<ViewStyle>;
@@ -28,7 +28,6 @@ const styles = StyleSheet.create({
     marginLeft: hp(5),
     fontSize: hp(16),
     fontWeight: '400',
-    // fontFamily: 'Euclid-Circular-A',
   },
   backContainer: {
     alignItems: 'center',

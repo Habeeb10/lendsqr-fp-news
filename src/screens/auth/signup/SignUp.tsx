@@ -5,11 +5,22 @@ import HideKeyboardOnTouch from '../../../common/util/HideKeyboardOnTouch';
 import SpacerWrapper from '../../../common/util/SpacerWrapper';
 import {Keyboard, TouchableWithoutFeedback} from 'react-native';
 import SignUpProfile from '../components/SignUpForm';
-import {CancelButtonWithUnderline} from '../../../components/CancelButton';
-import {hp} from '../../../common/util/LayoutUtils';
-import {Button} from '../../../components/Button';
+import {CancelButtonWithUnderline} from '../../../components/button/CancelButton';
+import {Button} from '../../../components/button/Button';
 import {Google} from '../../../../assets/svg';
-import {handleGoogleSignUp} from '../components/SingUpWithGoogleRegistration';
+import 'firebase/auth';
+import {firebase} from '../../../firebase/config';
+
+async function signUpWithGoogle() {
+  const provider = new firebase.auth.GoogleAuthProvider();
+  try {
+    const result = await firebase.auth().signInWithPopup(provider);
+    const user = result.user;
+    console.log(user);
+  } catch (error) {
+    console.error(error);
+  }
+}
 
 const SignUp = ({navigation}: {navigation: any}) => {
   return (
@@ -42,7 +53,7 @@ const SignUp = ({navigation}: {navigation: any}) => {
             title="Connect Google Account"
             icon={<Google />}
             styleText={CommonStyles.buttonSignup}
-            onPressButton={handleGoogleSignUp}
+            onPressButton={signUpWithGoogle}
           />
         </View>
       </HideKeyboardOnTouch>
