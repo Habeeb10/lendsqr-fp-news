@@ -1,28 +1,20 @@
 import React, {useEffect} from 'react';
-import {ActivityIndicator, FlatList, View, Alert} from 'react-native';
-import {useSelector} from 'react-redux';
-import * as Colors from '../../constants/Colors';
+import {FlatList, View, Alert} from 'react-native';
 import SpacerWrapper from '../../common/util/SpacerWrapper';
 import {CommonStyles} from '../../common/styles/CommonStyles';
 import {Button} from '../../components/Button';
 import {NewsList} from './NewsCard';
-import {Store} from '../../redux/Store';
-
-const {dispatch} = Store;
-const handError = () => {
-  if ('details') {
-    return Alert.alert('runtime error!');
-  } else {
-    null;
-  }
-};
+import {useAppDispatch, useAppSelector} from '../../redux/hooks';
+import {FetchNews} from '../../redux/slice/NewsSlice';
 
 export default function NewsListing({navigation}: {navigation: any}) {
-  const {title, loading} = useSelector(state => state.fPNews);
+  const {newsData} = useAppSelector(state => state.NewsReducer);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch.fPNews.loadData();
+    dispatch(FetchNews());
   }, []);
+  console.log({newsData});
 
   const _renderItem = ({item}: {item: any}) => {
     console.log(item);
@@ -36,10 +28,6 @@ export default function NewsListing({navigation}: {navigation: any}) {
     );
   };
 
-  if (loading) {
-    return <LoadingView />;
-  }
-
   return (
     <>
       <SpacerWrapper>
@@ -49,17 +37,21 @@ export default function NewsListing({navigation}: {navigation: any}) {
               title="Error"
               onPressButton={handError}
               icon={undefined} //   Style={CommonStyles.errorButton}
+              style={CommonStyles.listbutton}
+              styleText={CommonStyles.textStyle}
             />
             <Button
               title="Show Details"
-              onPressButton={() => navigation.navigate('details')}
+              onPressButton={() => navigation.navigate('newsDetails')}
               icon={undefined} //   Style={CommonStyles.listbutton}
+              style={CommonStyles.listbutton}
+              styleText={CommonStyles.textStyle}
             />
           </View>
 
           <FlatList
             keyExtractor={(_, index) => index.toString()}
-            data={title}
+            data={newsData}
             renderItem={_renderItem}
           />
         </View>
@@ -68,10 +60,10 @@ export default function NewsListing({navigation}: {navigation: any}) {
   );
 }
 
-const LoadingView = () => {
-  return (
-    <View style={CommonStyles.loading}>
-      <ActivityIndicator size="large" color={Colors.linear} />
-    </View>
-  );
+const handError = () => {
+  if ('newsDetails') {
+    return Alert.alert('runtime error!');
+  } else {
+    null;
+  }
 };

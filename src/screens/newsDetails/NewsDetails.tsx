@@ -1,48 +1,43 @@
 import React, {useEffect} from 'react';
-import {ActivityIndicator, FlatList, View} from 'react-native';
-import {useSelector} from 'react-redux';
-import {Store} from '../../redux/Store';
+import {FlatList, View} from 'react-native';
 import {CommonStyles} from '../../common/styles/CommonStyles';
 import {Button} from '../../components/Button';
-import * as Colors from '../../constants/Colors';
 import BackButton from '../../components/BackButton';
 import {DetailsList} from './DetailsCard';
-
-const {dispatch} = Store;
+import {useAppDispatch, useAppSelector} from '../../redux/hooks';
+import {FetchNews} from '../../redux/slice/NewsSlice';
 
 export default function NewsDetails({navigation}: {navigation: any}) {
-  const {title, loading} = useSelector(state => state.fPNews);
-
+  const {newsData} = useAppSelector(state => state.NewsReducer);
+  const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch.FpNews.loadData();
+    dispatch(FetchNews());
   }, []);
+  console.log({newsData});
 
   const _renderItem = ({item}: {item: any}) => {
     console.log(item);
-    return <DetailsList summary={item.summary} author={item.author} />;
+    return <DetailsList author={item.author} summary={item.summary} />;
   };
-
-  if (loading) {
-    return <LoadingView />;
-  }
 
   return (
     <>
       <View style={CommonStyles.detailcontainer}>
         <View>
           <View style={CommonStyles.deatilheader}>
-            <BackButton />
+            <BackButton onPress={() => navigation.goBack()} />
 
             <Button
               title="SignOut"
               onPressButton={() => navigation.navigate('signup')}
-              style={CommonStyles.detailbutton}
               icon={undefined}
+              style={CommonStyles.listbutton}
+              styleText={CommonStyles.textStyle}
             />
           </View>
 
           <FlatList
-            data={title}
+            data={newsData}
             showsVerticalScrollIndicator={false}
             keyExtractor={(_, index) => index.toString()}
             renderItem={_renderItem}
@@ -52,11 +47,3 @@ export default function NewsDetails({navigation}: {navigation: any}) {
     </>
   );
 }
-
-const LoadingView = () => {
-  return (
-    <View style={CommonStyles.detailloading}>
-      <ActivityIndicator size="large" color={Colors.linear} />
-    </View>
-  );
-};

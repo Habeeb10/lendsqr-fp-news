@@ -25,15 +25,14 @@ const styles = StyleSheet.create({
     borderRadius: hp(30),
   },
   summary: {
-    fontSize: hp(10),
-    color: Colors.purple,
+    fontSize: hp(13),
+    color: Colors.manatee,
     marginTop: hp(10),
-    fontWeight: '400',
+    fontWeight: '600',
   },
   author: {
-    fontSize: hp(12),
-    fontWeight: '400',
-    color: Colors.black,
+    fontSize: hp(13),
+    fontWeight: 'bold',
   },
   container: {
     borderRadius: hp(10),

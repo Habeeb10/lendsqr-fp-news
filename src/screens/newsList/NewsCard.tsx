@@ -8,7 +8,7 @@ type NewsListProps = {
   title: string;
   published_date: string;
   topic: string;
-  media: any;
+  media: string;
 };
 
 export const NewsList = ({
@@ -31,26 +31,26 @@ export const NewsList = ({
 };
 const styles = StyleSheet.create({
   image: {
-    width: wp(20),
-    height: hp(20),
+    width: wp(30),
+    height: hp(30),
     borderRadius: hp(30),
   },
   date: {
-    fontSize: hp(10),
+    fontSize: hp(12),
     fontWeight: '500',
-    color: Colors.black,
+    color: Colors.manatee,
   },
   title: {
-    fontSize: hp(10),
+    fontSize: hp(14),
     fontWeight: '500',
-    color: Colors.black,
+
     width: hp(200),
     marginBottom: hp(5),
   },
   topic: {
-    fontSize: hp(10),
+    fontSize: hp(13),
     fontWeight: '500',
-    color: Colors.black,
+    color: Colors.deepblue,
     marginBottom: hp(5),
   },
 
