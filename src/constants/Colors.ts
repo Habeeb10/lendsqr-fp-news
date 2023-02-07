@@ -21,3 +21,6 @@ export const lightgreen = '#E0FFE5';
 export const milk = '#FFFAEB';
 export const deeporange = '#EC7B15';
 export const darkgreen = '#013220';
+export const disables = '#A6A6A6';
+
+export const manatee = '#8F92B2';
