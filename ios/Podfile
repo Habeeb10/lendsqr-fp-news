@@ -19,6 +19,8 @@ target 'lendsqrfpnes' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
+  pod 'RNFBApp', :path => '../node_modules/@react-native-firebase/app'
+
   target 'lendsqrfpnesTests' do
     inherit! :complete
     # Pods for testing
