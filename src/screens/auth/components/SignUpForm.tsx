@@ -4,60 +4,81 @@ import InputFormFieldNormal from '../../../components/InputFormFieldNormal';
 import * as yup from 'yup';
 import {Button} from '../../../components/Button';
 import {CommonStyles} from '../../../common/styles/CommonStyles';
+import {Registration} from './FirebaseRegistration';
 
 const SignUpProfile = ({navigation}: {navigation: any}) => {
   const signUpValidationSchema = yup.object().shape({
-    firstname: yup.string().required('Firstname is required'),
-    lastname: yup.string().required('Lastname is required'),
+    password: yup.string().required('Full name is required'),
+    email: yup
+      .string()
+      .email('Please enter valid email')
+      .required('Email is required'), // phoneNumber: yup.number().required('phoneNumber is required'),
   });
-
+  // const [isButtonLoading, setButtonLoading] = useState(false);
+  // const onConfirm = () => {
+  //   setButtonLoading(true);
+  //   // TODO: perform api call based on purchaseName and continue to status screen if it is a success
+  //   if (true) {
+  //     setButtonLoading(true);
+  //     navigation.navigate('signin');
+  //   } else {
+  //     setButtonLoading(false);
+  //   }
+  // };
   return (
     <>
       <Formik
         validationSchema={signUpValidationSchema}
         initialValues={{
-          firstname: '',
-          lastname: '',
-          emailAddress: '',
-          phoneNumber: yup.number,
+          email: '',
+          password: '',
         }}
-        onSubmit={() => navigation.navigate('signin')}>
+        onSubmit={values => {
+          Registration(values)
+            .then(result => {
+              console.log('Success!', result);
+            })
+            .catch(error => {
+              console.error('Error!', error);
+            });
+          navigation.navigate('signin');
+        }}>
         {({
           handleChange,
           handleBlur,
-          handleSubmit,
           values,
           errors,
           isValid,
           touched,
+          handleSubmit,
         }) => (
           <>
             <InputFormFieldNormal
               placeholderVisible
-              onChangeText={handleChange('firstname')}
-              onBlur={handleBlur('firstname')}
-              value={values.firstname}
-              type="firstname"
+              onChangeText={handleChange('email')}
+              onBlur={handleBlur('email')}
+              value={values.email}
+              type="email"
               formikProps={{
-                errors: errors.firstname,
-                touched: touched.firstname,
+                errors: errors.email,
+                touched: touched.email,
               }}
               autoFocus
             />
 
             <InputFormFieldNormal
               placeholderVisible
-              onChangeText={handleChange('lastname')}
-              onBlur={handleBlur('lastname')}
-              value={values.lastname}
-              type="lastname"
+              onChangeText={handleChange('password')}
+              onBlur={handleBlur('password')}
+              value={values.password}
+              type="password"
               formikProps={{
-                errors: errors.lastname,
-                touched: touched.lastname,
+                errors: errors.password,
+                touched: touched.password,
               }}
-              autoFocus={false}
+              autoFocus
             />
-            <InputFormFieldNormal
+            {/* <InputFormFieldNormal
               placeholderVisible
               onChangeText={handleChange('phoneNumber')}
               onBlur={handleBlur('phoneNumber')}
@@ -68,28 +89,16 @@ const SignUpProfile = ({navigation}: {navigation: any}) => {
                 touched: touched.phoneNumber,
               }}
               autoFocus
-            />
-
-            <InputFormFieldNormal
-              placeholderVisible
-              onChangeText={handleChange('emailAddress')}
-              onBlur={handleBlur('emailAddress')}
-              value={values.emailAddress}
-              type="email"
-              formikProps={{
-                errors: errors.emailAddress,
-                touched: touched.emailAddress,
-              }}
-              autoFocus
-            />
+            /> */}
 
             <Button
-              title="Continue"
               onPressButton={handleSubmit}
+              title="Continue"
               style={CommonStyles.signupwithgoogle}
               styleText={CommonStyles.textStyle}
-              disabled={!isValid}
               icon={undefined}
+              disabled={!isValid}
+              // buttonLoading={isButtonLoading}
             />
           </>
         )}

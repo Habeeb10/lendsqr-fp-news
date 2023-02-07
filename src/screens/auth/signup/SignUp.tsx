@@ -7,13 +7,13 @@ import {Keyboard, TouchableWithoutFeedback} from 'react-native';
 import SignUpProfile from '../components/SignUpForm';
 import {CancelButtonWithUnderline} from '../../../components/CancelButton';
 import {hp} from '../../../common/util/LayoutUtils';
+import {Button} from '../../../components/Button';
+import {Google} from '../../../../assets/svg';
+import {handleGoogleSignUp} from '../components/SingUpWithGoogleRegistration';
 
 const SignUp = ({navigation}: {navigation: any}) => {
   return (
     <SpacerWrapper>
-      {/* <View style={{marginLeft: 20}}>
-          <BackButton onPress={() => navigation.goBack()} />
-        </View> */}
       <HideKeyboardOnTouch>
         <View style={CommonStyles.signUp}>
           <View style={[CommonStyles.phoneContainer]}>
@@ -23,22 +23,27 @@ const SignUp = ({navigation}: {navigation: any}) => {
           <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <SignUpProfile navigation={navigation} />
           </TouchableWithoutFeedback>
-          <View style={{alignSelf: 'center', marginBottom: 10}}>
-            <Text style={{fontWeight: 'bold', fontSize: 16}}>OR</Text>
-          </View>
+
           <View style={CommonStyles.row}>
             <Text style={[CommonStyles.account]}>
-              SignUp with your Google Account?{' '}
+              Already have an account Account?{' '}
             </Text>
             <CancelButtonWithUnderline
-              title="SignUp"
-              // onPressButton={() => navigation.getParent()?.navigate("SignIn")}
-              styleText={{
-                fontSize: hp(14),
-                fontWeight: '500',
-              }}
+              title="Login"
+              onPressButton={() => navigation.navigate('signin')}
+              styleText={CommonStyles.cancelButton}
             />
           </View>
+          <View style={CommonStyles.alternativeContainer}>
+            <Text style={CommonStyles.alternativeText}>OR</Text>
+          </View>
+          <Button
+            style={CommonStyles.buttonBackground}
+            title="Connect Google Account"
+            icon={<Google />}
+            styleText={CommonStyles.buttonSignup}
+            onPressButton={handleGoogleSignUp}
+          />
         </View>
       </HideKeyboardOnTouch>
     </SpacerWrapper>

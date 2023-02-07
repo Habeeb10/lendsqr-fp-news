@@ -30,6 +30,7 @@ const SignIn = ({navigation}: {navigation: any}) => {
 
           <View>
             <Button
+              onPressButton={() => navigation.navigate('newsListing')}
               icon={undefined}
               title="Sign In"
               style={CommonStyles.signupwithgoogle}
@@ -42,11 +43,7 @@ const SignIn = ({navigation}: {navigation: any}) => {
             </Text>
             <CancelButtonWithUnderline
               title="Login"
-              // onPressButton={() => navigation.getParent()?.navigate("SignIn")}
-              styleText={{
-                fontSize: hp(14),
-                fontWeight: '500',
-              }}
+              styleText={CommonStyles.buttonSignIn}
             />
           </View>
         </View>
