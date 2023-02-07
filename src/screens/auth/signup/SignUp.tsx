@@ -10,6 +10,7 @@ import {Button} from '../../../components/button/Button';
 import {Google} from '../../../../assets/svg';
 import 'firebase/auth';
 import {firebase} from '../../../firebase/config';
+import {handleSignUp} from '../components/SingUpWithGoogleRegistration';
 
 async function signUpWithGoogle() {
   const provider = new firebase.auth.GoogleAuthProvider();
@@ -53,7 +54,7 @@ const SignUp = ({navigation}: {navigation: any}) => {
             title="Connect Google Account"
             icon={<Google />}
             styleText={CommonStyles.buttonSignup}
-            onPressButton={signUpWithGoogle}
+            onPressButton={handleSignUp}
           />
         </View>
       </HideKeyboardOnTouch>

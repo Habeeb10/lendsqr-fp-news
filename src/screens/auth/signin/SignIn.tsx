@@ -6,6 +6,7 @@ import BackButton from '../../../components/button/BackButton';
 import {Button} from '../../../components/button/Button';
 import {CancelButtonWithUnderline} from '../../../components/button/CancelButton';
 import {Input} from '../../../components/input/input';
+import {signInWithGoogle} from '../components/SignInWithGoogle';
 
 const SignIn = ({navigation}: {navigation: any}) => {
   const [email, setEmail] = useState('');
@@ -56,6 +57,7 @@ const SignIn = ({navigation}: {navigation: any}) => {
             <CancelButtonWithUnderline
               title="Login"
               styleText={CommonStyles.buttonSignIn}
+              onPressButton={signInWithGoogle}
             />
           </View>
         </View>
