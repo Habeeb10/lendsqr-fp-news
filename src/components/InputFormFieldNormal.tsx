@@ -1,6 +1,7 @@
 import React from 'react';
 import {Text, TextInput, View} from 'react-native';
 import {CommonStyles} from '../common/styles/CommonStyles';
+// import {hp} from '../common/util/LayoutUtils';
 
 const InputFormFieldNormal = ({
   value,
@@ -14,21 +15,21 @@ const InputFormFieldNormal = ({
   onChangeText: (text: string) => void;
   onBlur: (e: any) => void;
   autoFocus: boolean;
-  value: any;
+  value: string;
   placeholderVisible: boolean;
   formikProps: {errors: any; touched: any};
-  type: 'email' | 'firstname' | 'lastname' | 'phoneNumber';
+  type: 'email' | 'firstname' | 'phoneNumber' | 'password' | 'fullName';
 }) => {
   const typeOfEmail = type === 'email';
 
   return (
-    <View style={CommonStyles.formcontainer}>
+    <View style={CommonStyles.formContainer}>
       {placeholderVisible ? (
-        <View style={CommonStyles.formtext}>
-          <Text style={CommonStyles.placeholder}>
+        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+          <Text style={CommonStyles.formStyle}>
             {type.charAt(0).toUpperCase() + type.slice(1)}
           </Text>
-          <Text style={CommonStyles.asteric}>*</Text>
+          <Text style={{color: 'red'}}>*</Text>
         </View>
       ) : (
         <></>

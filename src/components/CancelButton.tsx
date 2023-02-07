@@ -39,9 +39,7 @@ export const CancelButtonWithUnderline: FC<ButtonPropsType> = ({
       <Text
         style={[
           {
-            fontSize: hp(14),
-            fontWeight: '500',
-            // fontFamily: 'Euclid-Circular-A',
+            fontSize: hp(30),
           },
           styleText,
         ]}>

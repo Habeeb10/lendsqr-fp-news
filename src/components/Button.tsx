@@ -5,6 +5,7 @@ import {
   StyleProp,
   TextStyle,
   ViewStyle,
+  ActivityIndicator,
 } from 'react-native';
 import * as Colors from '../constants/Colors';
 import {hp} from '../common/util/LayoutUtils';
@@ -17,6 +18,7 @@ type ButtonPropsType = {
   styleText?: StyleProp<TextStyle>;
   icon: any;
   disabled?: boolean;
+  buttonLoading?: boolean;
 };
 
 export const Button: FC<ButtonPropsType> = ({
@@ -27,29 +29,34 @@ export const Button: FC<ButtonPropsType> = ({
   styleText,
   icon,
   disabled,
+  buttonLoading,
 }) => {
   return (
     <TouchableOpacity
-      disabled={disabled}
+      disabled={disabled || buttonLoading}
       activeOpacity={0.6}
       onPress={onPressButton}
       style={[
         styles.doneButton,
         isNext && styles.nextButton,
         style,
-        {flexDirection: 'row'},
+        {flexDirection: 'row', alignItems: 'center'},
+
         disabled && {
-          backgroundColor: '#A6A6A6',
-        },
-        {
+          backgroundColor: Colors.disables,
           opacity: disabled ? 0.5 : 1,
-          backgroundColor: '#A6A6A6',
         },
+
         style,
       ]}>
       {icon}
+
       <Text style={[styles.doneText, isNext && styles.nextText, styleText]}>
-        {title}
+        {buttonLoading ? (
+          <ActivityIndicator animating={buttonLoading} />
+        ) : (
+          title
+        )}
       </Text>
     </TouchableOpacity>
   );
